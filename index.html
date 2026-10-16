@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manukan ng Bayan - Sari Sari Store | Ozamiz</title>
+<style>
+:root{--blue:#1447A6;--yellow:#FFD500;--bg:#F6F8FF;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:var(--bg);color:#132a6b;padding-bottom:90px}
+header{background:var(--blue);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;position:sticky;top:0;z-index:10}
+.banner{background:var(--yellow);margin:14px;border-radius:20px;padding:18px}
+.btn-blue{background:var(--blue);color:var(--yellow);border:none;padding:10px 18px;border-radius:10px;font-weight:800;cursor:pointer}
+.btn-yellow{background:var(--yellow);color:var(--blue);border:2px solid var(--blue);padding:8px 14px;border-radius:10px;font-weight:800;cursor:pointer}
+.card{background:#fff;border-radius:16px;padding:12px;display:flex;justify-content:space-between;align-items:center;margin:10px 14px;box-shadow:0 4px 12px rgba(20,71,166,.08)}
+.price{color:var(--blue);font-weight:900}
+.cart-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:3px solid var(--blue);padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.paybox{background:#fff;margin:14px;border-radius:14px;padding:14px;border:2px dashed var(--blue)}
+</style>
+</head>
+<body>
+<header><b>🐔 Manukan ng Bayan - Sari Sari Store</b><span id="cartCount">🛒 0</span></header>
+
+<div class="banner">
+<h1 style="color:#0E3A8A;margin:0">Sariwang Manok,<br>Araw-Araw!</h1>
+<p style="margin:6px 0">📍 Ozamiz City • <b>PICK-UP ONLY</b> • Fresh daily</p>
+</div>
+
+<div class="paybox">
+<b>💳 Payment:</b> GCash <b>0952 489 6894</b><br>
+<small>Send screenshot after payment. Name: Manukan ng Bayan</small>
+</div>
+
+<div id="products">
+<h3 style="padding:0 14px">Available Today</h3>
+<div class="card"><div><b>Whole Chicken 1.2kg</b><br><span class="price">₱210</span></div><button class="btn-yellow" onclick="add('Whole Chicken 1.2kg - ₱210')">+ Add</button></div>
+<div class="card"><div><b>Chicken Eggs 12pcs</b><br><span class="price">₱95</span></div><button class="btn-yellow" onclick="add('Eggs 12pcs - ₱95')">+ Add</button></div>
+<div class="card"><div><b>Chicken Wings 500g</b><br><span class="price">₱130</span></div><button class="btn-yellow" onclick="add('Wings 500g - ₱130')">+ Add</button></div>
+<div class="card"><div><b>Rice 5kg</b><br><span class="price">₱250</span></div><button class="btn-yellow" onclick="add('Rice 5kg - ₱250')">+ Add</button></div>
+</div>
+
+<div class="cart-bar">
+<span id="cartText">0 items</span>
+<button class="btn-blue" onclick="checkout()">Order for Pick-up</button>
+</div>
+
+<script>
+let cart=[];
+function add(i){cart.push(i);document.getElementById('cartCount').innerText='🛒 '+cart.length;document.getElementById('cartText').innerText=cart.length+' items for pick-up';}
+function checkout(){
+ if(cart.length==0){alert('Add items first!');return;}
+ let msg='Hello Manukan ng Bayan! PICK-UP ORDER:%0A%0A'+cart.join('%0A')+'%0A%0APick-up Time:%0AName:%0A%0APayment: GCash 09524896894 - will send screenshot';
+ window.open('https://wa.me/639524896894?text='+msg,'_blank');
+}
+</script>
+</body>
+</html>
